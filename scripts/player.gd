@@ -5,6 +5,7 @@ var enemy_inattack_range = false
 var enemy_attack_cooldown = true
 var health = 700
 var player_alive = true
+signal health_depleted
 
 var attack_ip = false
 var attack_mode = false
@@ -24,10 +25,11 @@ func _physics_process(_delta):
 	if not can_move:
 		return
 
-	if health <= 0:
+	if health <= 0 and player_alive:
 		player_alive = false
 		health = 0
 		print("Player has been killed")
+		emit_signal("health_depleted")
 		queue_free()
 
 func player_movement(_delta):
@@ -166,3 +168,7 @@ func _on_regin_timer_timeout():
 		health = 0
 		queue_free()
 	update_health()
+
+
+func _on_health_depleted() -> void:
+	pass # Replace with function body.

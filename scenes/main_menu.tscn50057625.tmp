@@ -1,6 +1,5 @@
-[gd_scene load_steps=9 format=3 uid="uid://b4ocl7hysmiud"]
+[gd_scene load_steps=8 format=3 uid="uid://b4ocl7hysmiud"]
 
-[ext_resource type="Script" uid="uid://cj46x1d525rte" path="res://scripts/ui_rpg.gd" id="1_ekxnf"]
 [ext_resource type="Texture2D" uid="uid://cjoe2mto2g482" path="res://art/objects/main_icon.png" id="2_bqqt6"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ekxnf"]
@@ -8,6 +7,37 @@ texture = ExtResource("2_bqqt6")
 modulate_color = Color(3.1285e-07, 0.338422, 0.300198, 1)
 
 [sub_resource type="GDScript" id="GDScript_l6cm7"]
+script/source = "# ui_rpg.gd
+extends Panel
+
+
+
+
+
+func _ready() -> void:
+	vbox_start.visible = true
+	vbox_try.visible   = false
+	vbox_play.visible  = false
+
+func _on_start_pressed() -> void:
+	get_tree().change_scene_to_file(\"res://scenes/world.tscn\")
+
+func show_game_over() -> void:
+	vbox_start.visible = false
+	vbox_try.visible   = true
+	vbox_play.visible  = false
+
+func show_victory() -> void:
+	vbox_start.visible = false
+	vbox_try.visible   = false
+	vbox_play.visible  = true
+
+func _on_tryagain_pressed() -> void:
+	get_tree().change_scene_to_file(\"res://scenes/MainMenu.tscn\")
+
+func _on_playagain_pressed() -> void:
+	get_tree().change_scene_to_file(\"res://scenes/world.tscn\")
+"
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bqqt6"]
 bg_color = Color(0, 0.521569, 0.317647, 0.996078)
@@ -46,7 +76,6 @@ shadow_size = 11
 
 [sub_resource type="SystemFont" id="SystemFont_l6cm7"]
 font_names = PackedStringArray("Imprint MT Shadow")
-subpixel_positioning = 0
 
 [node name="Main_Menu" type="Control"]
 layout_mode = 3
@@ -55,7 +84,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_ekxnf")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -155,7 +183,3 @@ text = " RPG Adventure "
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
-
-[connection signal="pressed" from="MarginContainer/VBoxContainer/start" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer2/tryagain" to="." method="_on_tryagain_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer3/playagain" to="." method="_on_playagain_pressed"]
