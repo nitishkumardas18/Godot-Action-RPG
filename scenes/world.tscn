@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://xsohxuu521ek"]
+[gd_scene load_steps=12 format=3 uid="uid://xsohxuu521ek"]
 
 [ext_resource type="Texture2D" uid="uid://bq6vumdympv03" path="res://art/tilesets/plains.png" id="1_4wyf3"]
 [ext_resource type="Texture2D" uid="uid://gtq10rel57p0" path="res://art/tilesets/grass.png" id="2_k0juu"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://ks7y7yuafvy3" path="res://scenes/player.tscn" id="4_k0juu"]
 [ext_resource type="PackedScene" uid="uid://dslvkeg05dqwm" path="res://scenes/enemy.tscn" id="5_71j4m"]
 [ext_resource type="Script" uid="uid://rjd1lojdyb0b" path="res://scripts/enemyspawner.gd" id="7_i7141"]
+[ext_resource type="Script" uid="uid://dy33xpsycxg0v" path="res://scripts/world.gd" id="10_worldgd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qfnet"]
 texture = ExtResource("1_4wyf3")
@@ -300,6 +301,7 @@ sources/2 = SubResource("TileSetAtlasSource_4mrxx")
 
 [node name="world" type="Node2D"]
 y_sort_enabled = true
+script = ExtResource("10_worldgd")
 
 [node name="TileMap" type="TileMap" parent="."]
 y_sort_enabled = true

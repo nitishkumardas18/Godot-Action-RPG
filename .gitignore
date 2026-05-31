@@ -1,3 +1,20 @@
-# Godot 4+ specific ignores
+# Godot cache
 .godot/
-/android/
+
+# Localization files
+*.translation
+
+# Exported builds
+*.exe
+*.zip
+*.pck
+*.apk
+*.aab
+
+# Temporary files
+*.tmp
+*.log
+
+# Windows files
+Thumbs.db
+Desktop.ini
